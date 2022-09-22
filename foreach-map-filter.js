@@ -6,8 +6,13 @@ Examples:
     doubleValues([5,1,2,3,10]) // [10,2,4,6,20]
 
 */
+function double(num){
+    return num*2;
+}
+
+
 function doubleValues(arr){
-    
+    return arr.map(double);
 }
 
 /*
@@ -18,8 +23,17 @@ Examples:
     onlyEvenValues([5,1,2,3,10]) // [2,10]
 
 */
+
+function checkIfEven(num){
+    if(num%2==0){
+        return true;
+    }
+    return false;
+}
+
+
 function onlyEvenValues(arr){
-    
+    return arr.filter(checkIfEven);
 }
 
 /*
@@ -30,12 +44,21 @@ Examples:
     showFirstAndLast(['hi', 'goodbye', 'smile']) // ['hi', 'ge', 'se']
 
 */
-function showFirstAndLast(arr){
+
+function firLa(str){
+    let fChar = str[0];
+    let lChar = str[str.length-1];
+    return `${fChar}${lChar}`;
     
 }
 
+function showFirstAndLast(arr){
+    return arr.map(firLa);
+}
+
 /*
-Write a function called addKeyAndValue which accepts an array of objects, a key, and a value and returns the array passed to the function with the new key and value added for each object 
+Write a function called addKeyAndValue which accepts an array of objects, a key, 
+and a value and returns the array passed to the function with the new key and value added for each object 
 
 Examples:
     addKeyAndValue([{name: 'Elie'}, {name: 'Tim'}, {name: 'Matt'}, {name: 'Colt'}], 'title', 'instructor') 
@@ -43,12 +66,21 @@ Examples:
     // [{name: 'Elie', title:'instructor'}, {name: 'Tim', title:'instructor'}, {name: 'Matt', title:'instructor'}, {name: 'Colt', title:'instructor'}]
 
 */
+
+
+
+
 function addKeyAndValue(arr,key,value){
-    
+    arr.forEach(x => {
+        x[key] = value;
+    });
+    return arr;
 }
 
 /*
-Write a function called vowelCount which accepts a string and returns an object with the keys as the vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a lowercase letter and uppercase letter should count
+Write a function called vowelCount which accepts a string and returns an object with the keys as the 
+vowel and the values as the number of times the vowel appears in the string. This function should be case insensitive so a 
+lowercase letter and uppercase letter should count
 
 Examples:
     vowelCount('Elie') // {e:2,i:1};
@@ -57,8 +89,73 @@ Examples:
     vowelCount('hmmm') // {};
     vowelCount('I Am awesome and so are you') // {i: 1, a: 4, e: 3, o: 3, u: 1};
 */
+function countA(str){
+    let c = 0;
+    for(let ch of str){
+        if(ch == "a" || ch == "A"){
+            c++;
+        }
+    }
+    return c;
+}
+function countE(str){
+    let c = 0;
+    for(let ch of str){
+        if(ch == "e" || ch == "E"){
+            c++;
+        }
+    }
+    return c;
+}
+function countI(str){
+    let c = 0;
+    for(let ch of str){
+        if(ch == "i" || ch == "I"){
+            c++;
+        }
+    }
+    return c;
+}
+function countO(str){
+    let c = 0;
+    for(let ch of str){
+        if(ch == "o" || ch == "O"){
+            c++;
+        }
+    }
+    return c;
+}
+function countU(str){
+    let c = 0;
+    for(let ch of str){
+        if(ch == "u" || ch == "U"){
+            c++;
+        }
+    }
+    return c;
+}
+
+
+
+
 function vowelCount(str){
-   
+    let counts = {};
+    if(countA(str) > 0){
+        counts.a = countA(str);
+    }
+    if(countE(str) > 0){
+        counts.e = countE(str);
+    }
+    if(countI(str) > 0){
+        counts.i = countI(str);
+    }
+    if(countO(str) > 0){
+        counts.o = countO(str);
+    }
+    if(countU(str) > 0){
+        counts.u = countU(str);
+    }
+    return counts;
 }
 
 /*
@@ -69,7 +166,9 @@ Examples:
     doubleValuesWithMap([1,-2,-3]) // [2,-4,-6]
 */
 
-function doubleValuesWithMap(arr) {}
+function doubleValuesWithMap(arr) {
+    return arr.map(x => x*2);
+}
 
 /*
 Write a function called valTimesIndex which accepts an array and returns a new array with each value multiplied by the index it is currently at in the array.
@@ -79,8 +178,16 @@ Examples:
     valTimesIndex([1,-2,-3]) // [0,-2,-6]
 */
 
+
+
+
 function valTimesIndex(arr){
-    
+    let newArr = [];
+    for(let i = 0; i < arr.length; i++){
+        newArr.push(arr[i]*i);
+    }
+
+    return newArr;
 }
 
 /*
