@@ -198,7 +198,12 @@ Examples:
 */
 
 function extractKey(arr, key){
-    
+    let a = [];
+
+    arr.forEach(x => {
+        a.push(x[key]);
+    });
+    return a;
 }
 
 /*
@@ -209,6 +214,15 @@ Examples:
 */
 
 function extractFullName(arr){
+    let a = [];
+    let firstName = "";
+    let lastName = "";
+    arr.forEach(x => {
+        firstName = x.first;
+        lastName = x.last;
+        a.push(`${firstName} ${lastName}`);
+    });
+    return a;
     
 }
 
@@ -219,44 +233,97 @@ Examples:
     filterByValue([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner') // [{first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Colt', last:"Steele", isCatOwner: true}]
 */
 
-function filterByValue(arr, key) {}
+function filterByValue(arr, key) {
+
+    let a = [];
+
+    arr.forEach(x => {
+        if(x[key]==true){
+            a.push(x);
+        }
+    });
+    return a;
+}
 
 /*
-Write a function called find which accepts an array and a value and returns the first element in the array that has the same value as the second parameter or undefined if the value is not found in the array.
+Write a function called find which accepts an array and a value and returns the first 
+element in the array that has the same value as the second parameter or undefined if the value is not found in the array.
 
 Examples:
     find([1,2,3,4,5], 3) // 3
     find([1,2,3,4,5], 10) // undefined
 */
 
-function find(arr, searchValue) {}
+function find(arr, searchValue) {
+    let num = undefined;
+    arr.forEach(x => {
+        if(x === searchValue){
+            console.log(x);
+            num = x;;
+        }
+    });
+    return num;
+}
 
 /*
-Write a function called findInObj which accepts an array of objects, a key, and some value to search for and returns the first found value in the array.
+Write a function called findInObj which accepts an array of objects, a key, and some value to 
+search for and returns the first found value in the array.
 
 Examples:
     findInObj([{first: 'Elie', last:"Schoppik"}, {first: 'Tim', last:"Garcia", isCatOwner: true}, {first: 'Matt', last:"Lane"}, {first: 'Colt', last:"Steele", isCatOwner: true}], 'isCatOwner',true) // {first: 'Tim', last:"Garcia", isCatOwner: true}
 */
 
-function findInObj(arr, key, searchValue) {}
+function findInObj(arr, key, searchValue) {
+    arr.forEach(x => {
+        if(x[key]==searchValue){
+            return x;
+        }
+    });
+}
 
 /*
-Write a function called removeVowels which accepts a string and returns a new string with all of the vowels (both uppercased and lowercased) removed. Every character in the new string should be lowercased.
+Write a function called removeVowels which accepts a string and returns a new string with all of the vowels 
+(both uppercased and lowercased) removed. Every character in the new string should be lowercased.
 
 Examples:
     removeVowels('Elie') // ('l')
     removeVowels('TIM') // ('tm')
     removeVowels('ZZZZZZ') // ('zzzzzz')
 */
+function checkIfIsConst(ch){
+    if(ch == a || ch == e || ch == i || ch == o || ch == u || ch == A || ch == E || ch == I || ch == O || ch == U){
+        return true;
+    }
+    return false;
+}
 
-function removeVowels(str) {}
+
+function removeVowels(str) {
+    let newStr = "";
+    for(let c of str){
+        if(checkIfIsConst(c)){
+            newStr.concat(c.toLowerCase());
+        }
+    };
+    return newStr;
+}
 
 /*
-Write a function called doubleOddNumbers which accepts an array and returns a new array with all of the odd numbers doubled (HINT - you can use map and filter to double and then filter the odd numbers).
+Write a function called doubleOddNumbers which accepts an array and returns a new array with all of the odd numbers doubled 
+(HINT - you can use map and filter to double and then filter the odd numbers).
 
 Examples:
     doubleOddNumbers([1,2,3,4,5]) // [2,6,10]
     doubleOddNumbers([4,4,4,4,4]) // []
 */
 
-function doubleOddNumbers(arr) {}
+function doubleOddNumbers(arr) {
+    let a = [];
+
+    arr.forEach(x => {
+        if(x%2!=0){
+            a.push(x*2);
+        }
+    });
+    return a;
+}
