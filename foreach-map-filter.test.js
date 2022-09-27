@@ -138,11 +138,7 @@ describe("#findInObj", function() {
     { first: "Colt", last: "Steele", isCatOwner: true }
   ];
   it("returns the first value found in an array", function() {
-    expect(findInObj(arr, "isCatOwner", true)).toEqual({
-      first: "Tim",
-      last: "Garcia",
-      isCatOwner: true
-    });
+    expect(findInObj(arr, "isCatOwner", true)).toEqual({first: "Tim", last: "Garcia", isCatOwner: true});
   });
   it("returns undefined if the value is not found", function() {
     expect(findInObj(arr, "isCatOwner", false)).toEqual(undefined);

@@ -258,7 +258,6 @@ function find(arr, searchValue) {
     let num = undefined;
     arr.forEach(x => {
         if(x === searchValue){
-            console.log(x);
             num = x;;
         }
     });
@@ -274,11 +273,13 @@ Examples:
 */
 
 function findInObj(arr, key, searchValue) {
-    arr.forEach(x => {
-        if(x[key]==searchValue){
-            return x;
+    for(let Ob of arr) {
+        if(Ob[key] === searchValue){
+            console.log(searchValue);
+            return Ob;
         }
-    });
+    }
+    return undefined;
 }
 
 /*
@@ -291,10 +292,10 @@ Examples:
     removeVowels('ZZZZZZ') // ('zzzzzz')
 */
 function checkIfIsConst(ch){
-    if(ch == a || ch == e || ch == i || ch == o || ch == u || ch == A || ch == E || ch == I || ch == O || ch == U){
-        return true;
+    if(ch === "a" || ch === "e" || ch === "i" || ch === "o" || ch === "u" || ch === "A" || ch === "E" || ch === "I" || ch === "O" || ch === "U"){
+        return false;
     }
-    return false;
+    return true;
 }
 
 
@@ -302,7 +303,7 @@ function removeVowels(str) {
     let newStr = "";
     for(let c of str){
         if(checkIfIsConst(c)){
-            newStr.concat(c.toLowerCase());
+            newStr += c.toLowerCase();
         }
     };
     return newStr;
